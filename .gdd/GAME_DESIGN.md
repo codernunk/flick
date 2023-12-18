@@ -37,6 +37,7 @@ _Price_: Free (it's open source, after all)
 
 - Basically any platformer
 - Heavily influenced by games from the Flash era
+- Super Mario Odyssey (primarily the idea of one mechanic providing a variety of uses)
 
 ## Design Pillars
 
@@ -80,16 +81,6 @@ The camera will follow the player based on the position of the player
 
 ## Overview and Gameplay Loop
 
-Seeds and Spuds
-Seeds are earned through completing levels in Campaign, Challenge Levels, Enemy Trials, or Multiplayer Battles. Seeds can also be purchased.
-Seeds are required to attempt a level, even if the level was previously completed. When the player dies within the level, he will lose seeds.
-Seeds are also used to purchase in-game content, such as customization options.
-Seeds are organized into six colors: red, blue, yellow, green, black and white.
-Spuds are potato creatures that have been captured by Rott N. Potato.
-Spuds are earned for completing challenges for the various game modes, such as completing a level for the first time, clearing Time Trials, etc.
-Spuds are required to access further levels in the Campaign, Challenge Levels, and for certain customization options that provide upgraded effects.
-Spuds cannot be purchased.
-
 ## Main Menu
 
 ## Worlds and Levels
@@ -105,8 +96,6 @@ Spuds cannot be purchased.
 Time trials
 Get all collectables
 Challenge levels
-Multiplayer mode?
-Increased difficulty options on levels (can be further unlocked with spuds)
 
 # Target Audience and Marketing
 

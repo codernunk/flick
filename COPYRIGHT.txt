@@ -1,6 +1,7 @@
 # Exhaustive licensing information for files in the flick repository
 # =========================================================================
-# This copyright notice is templated from the Godot source repository here: https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt
+# This copyright notice is templated from the Godot source repository here: 
+# https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt
 #
 # This file aims at documenting the copyright and license for every source
 # file in the flick repository, and especially outline the files
@@ -30,26 +31,24 @@
 # files or code snippets might be distributed under other compatible licenses
 # (e.g. a public domain dedication), but as far as flick is concerned
 # the library is considered as a whole under the Zlib license.
-#
-# Note: When linking dynamically against thirdparty libraries instead of
-# building them into the Godot binary, you may remove the corresponding
-# license details from this file.
-
 -----------------------------------------------------------------------
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Godot Engine
-Upstream-Contact: Rémi Verschelde <contact@godotengine.org>
-Source: https://github.com/godotengine/godot
+Upstream-Name: Flick!
+Upstream-Contact: CoderNunk <codernunk@gmail.com>
+Source: https://github.com/codernunk/flick
 
 Files: *
-Comment: Flick!
+Comment: Flick! art assets
 Copyright: 2023-present, codernunk
-License: Expat
+License: CC-BY-4.0
 
-Files: ./icon.png
- ./icon.svg
- ./logo.png
- ./logo.svg
-Comment: Flick! logo
+Files: **/*.gd, **/*.tscn, **/*.gshader, **/*.import
+Comment: Flick! Godot source code files
 Copyright: 2023-present, codernunk
+License: MIT
+
+Files: ./scenes/splash_screen/logo_vertical_color_light.svg
+    ./icon.png
+Comment: Godot Engine Logo
+Copyright: 2017, Andrea Calabró
 License: CC-BY-4.0
