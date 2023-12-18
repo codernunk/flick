@@ -1,0 +1,249 @@
+[gd_scene load_steps=22 format=3 uid="uid://c4fa5svcdtmmp"]
+
+[ext_resource type="Script" path="res://scenes/player/ui/spud_list.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://crk8u4q5h81a7" path="res://global/particles/object_atlas.png" id="2"]
+[ext_resource type="Theme" uid="uid://b441552tienkm" path="res://main_theme.theme" id="3"]
+
+[sub_resource type="Animation" id="24"]
+resource_name = "Hide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:offset_bottom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 140.0]
+}
+
+[sub_resource type="Animation" id="25"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:offset_bottom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="26"]
+resource_name = "Show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:offset_bottom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [140.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_olc76"]
+_data = {
+"Hide": SubResource("24"),
+"RESET": SubResource("25"),
+"Show": SubResource("26")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="14"]
+animation = &"Hide"
+
+[sub_resource type="AnimationNodeAnimation" id="15"]
+animation = &"Show"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="16"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="17"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xy1mj"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="18"]
+states/Hide/node = SubResource("14")
+states/Hide/position = Vector2(629, 87)
+states/Show/node = SubResource("15")
+states/Show/position = Vector2(331, 87)
+transitions = ["Show", "Hide", SubResource("16"), "Hide", "Show", SubResource("17"), "Start", "Show", SubResource("AnimationNodeStateMachineTransition_xy1mj")]
+
+[sub_resource type="AnimationNodeBlendTree" id="27"]
+graph_offset = Vector2(-525, -121)
+nodes/StateMachine/node = SubResource("18")
+nodes/StateMachine/position = Vector2(0, 80)
+nodes/output/position = Vector2(220, 80)
+node_connections = [&"output", 0, &"StateMachine"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="28"]
+
+[sub_resource type="AtlasTexture" id="29"]
+atlas = ExtResource("2")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="30"]
+atlas = ExtResource("2")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="31"]
+atlas = ExtResource("2")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="32"]
+atlas = ExtResource("2")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="33"]
+atlas = ExtResource("2")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="34"]
+atlas = ExtResource("2")
+region = Rect2(640, 128, 128, 128)
+
+[node name="SpudList" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3")
+script = ExtResource("1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_olc76")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("27")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/StateMachine/playback = SubResource("28")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="green" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("29")
+stretch_mode = 3
+
+[node name="Shadow" type="TextureRect" parent="Panel/HBoxContainer/green"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.392157)
+show_behind_parent = true
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 132.0
+offset_bottom = 132.0
+texture = SubResource("29")
+stretch_mode = 3
+
+[node name="yellow" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("30")
+stretch_mode = 3
+
+[node name="Shadow" type="TextureRect" parent="Panel/HBoxContainer/yellow"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.392157)
+show_behind_parent = true
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 132.0
+offset_bottom = 132.0
+texture = SubResource("30")
+stretch_mode = 3
+
+[node name="blue" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("31")
+stretch_mode = 3
+
+[node name="Shadow" type="TextureRect" parent="Panel/HBoxContainer/blue"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.392157)
+show_behind_parent = true
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 132.0
+offset_bottom = 132.0
+texture = SubResource("31")
+stretch_mode = 3
+
+[node name="red" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("32")
+stretch_mode = 3
+
+[node name="Shadow" type="TextureRect" parent="Panel/HBoxContainer/red"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.392157)
+show_behind_parent = true
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 132.0
+offset_bottom = 132.0
+texture = SubResource("32")
+stretch_mode = 3
+
+[node name="white" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("33")
+stretch_mode = 3
+
+[node name="Shadow" type="TextureRect" parent="Panel/HBoxContainer/white"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.392157)
+show_behind_parent = true
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 132.0
+offset_bottom = 132.0
+texture = SubResource("33")
+stretch_mode = 3
+
+[node name="black" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("34")
+stretch_mode = 3
+
+[node name="Shadow" type="TextureRect" parent="Panel/HBoxContainer/black"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.392157)
+show_behind_parent = true
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 132.0
+offset_bottom = 132.0
+texture = SubResource("34")
+stretch_mode = 3
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

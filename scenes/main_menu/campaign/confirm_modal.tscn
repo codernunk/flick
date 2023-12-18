@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvnurc7bjokmt"]
+
+[ext_resource type="Theme" uid="uid://b441552tienkm" path="res://main_theme.theme" id="1_ivhqi"]
+[ext_resource type="Script" path="res://scenes/main_menu/campaign/confirm_modal.gd" id="2_nu8em"]
+[ext_resource type="Texture2D" uid="uid://crk8u4q5h81a7" path="res://global/particles/object_atlas.png" id="3_d3ybv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5k1v"]
+atlas = ExtResource("3_d3ybv")
+region = Rect2(0, 0, 128, 128)
+
+[node name="ModalWindow" type="Control"]
+top_level = true
+z_index = 1000
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ivhqi")
+script = ExtResource("2_nu8em")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.207843)
+
+[node name="Contents" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 0)
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 300
+
+[node name="Panel" type="Panel" parent="Contents"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Contents/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Contents/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center]Are you ready to play [color=green]1-1[/color]?
+Tap the bean to start!
+[/center]"
+fit_content = true
+
+[node name="FlickZone" type="TextureRect" parent="Contents/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_o5k1v")
+stretch_mode = 5
+
+[node name="BackButton" type="Button" parent="Contents/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "< Back"
+
+[connection signal="gui_input" from="Contents/Panel/MarginContainer/VBoxContainer/FlickZone" to="." method="_on_flick_zone_gui_input"]
+[connection signal="button_up" from="Contents/Panel/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_button_up"]

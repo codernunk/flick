@@ -11,19 +11,16 @@ config_version=5
 [application]
 
 config/name="Flick"
-run/main_scene="res://scenes/main_menu/_Main.tscn"
-config/features=PackedStringArray("4.1")
+run/main_scene="res://scenes/splash_screen/splash_screen.tscn"
+config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
 
 [autoload]
 
-Level="*res://scripts/Level.gd"
-Constants="*res://scripts/Constants.gd"
-AnimaUI="*res://addons/anima/ui/AnimaUI.gd"
-ANIMA="*res://addons/anima/core/constants.gd"
-Anima="*res://addons/anima/core/anima.gd"
-SavedData="*res://scripts/SavedData.gd"
-Functions="*res://scripts/Functions.gd"
+Level="*res://global/scripts/Level.gd"
+Constants="*res://global/scripts/Constants.gd"
+SavedData="*res://global/scripts/SavedData.gd"
+Functions="*res://global/scripts/Functions.gd"
 
 [debug]
 
@@ -44,7 +41,7 @@ convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/anima/plugin.cfg")
+enabled=PackedStringArray()
 
 [gui]
 

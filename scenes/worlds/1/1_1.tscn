@@ -1,0 +1,554 @@
+[gd_scene load_steps=12 format=3 uid="uid://o0gumjncdcu4"]
+
+[ext_resource type="PackedScene" uid="uid://dixc53qmk7mt1" path="res://scenes/worlds/1/platforms/platform.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://rywpywong4ea" path="res://scenes/worlds/1/parallax_background.tscn" id="1_cpqwv"]
+[ext_resource type="PackedScene" uid="uid://b4agij0h8yfh5" path="res://scenes/enemies/tomato_bro/tomato_bro.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dxp3cwfak8flg" path="res://scenes/worlds/1/platforms/land.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://d2guhbdivtrj3" path="res://scenes/spring/spring.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://33okuj8j1cn" path="res://scenes/bean/bean.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://cyslnpajdgp3g" path="res://scenes/enemies/tomato_bro_flying/tomato_bro_flying.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://bdgf4ie7ruw0" path="res://scenes/exit/exit.tscn" id="10_r1ixd"]
+[ext_resource type="PackedScene" uid="uid://ba7fm7mbk8u70" path="res://scenes/spuds/spud.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://buc0w4by4o7em" path="res://scenes/player/player.tscn" id="11_omw5e"]
+[ext_resource type="Texture2D" uid="uid://c63q2ss24c224" path="res://scenes/worlds/1/frame.png" id="11_ulyy3"]
+
+[node name="1_1" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Frame" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(960, 991.125)
+scale = Vector2(0.5, 0.25)
+texture = ExtResource("11_ulyy3")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_cpqwv")]
+
+[node name="Player" parent="." instance=ExtResource("11_omw5e")]
+position = Vector2(480, -512)
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Land" parent="Ground" instance=ExtResource("3")]
+position = Vector2(0, -1088)
+
+[node name="Polygon2D" parent="Ground/Land" index="0"]
+polygon = PackedVector2Array(0, -2688, 128, -2688, 128, 640, 1600, 640, 1600, 1088, 0, 1088)
+
+[node name="Outline" parent="Ground/Land" index="1"]
+points = PackedVector2Array(0, -2688, 128, -2688, 128, 640, 1600, 640, 1600, 1088, 0, 1088, 0, -2688)
+
+[node name="Land3" parent="Ground" instance=ExtResource("3")]
+position = Vector2(3232, -2032)
+
+[node name="Polygon2D" parent="Ground/Land3" index="0"]
+texture_offset = Vector2(0, 16)
+polygon = PackedVector2Array(-1312, 1584, 352, 1584, 732, 1392, 992, 1392, 992, 1008, 1312, 1008, 1312, 816, 1568, 816, 1568, 1584, 2592, 1584, 2592, 2032, 1568, 2032, -1312, 2032)
+
+[node name="Outline" parent="Ground/Land3" index="1"]
+points = PackedVector2Array(-1312, 1584, 352, 1584, 732, 1392, 992, 1392, 992, 1008, 1312, 1008, 1312, 816, 1568, 816, 1568, 1584, 2592, 1584, 2592, 2032, 1568, 2032, -1312, 2032, -1312, 1584)
+
+[node name="Land2" parent="Ground" instance=ExtResource("3")]
+position = Vector2(7424, -1536)
+
+[node name="Polygon2D" parent="Ground/Land2" index="0"]
+polygon = PackedVector2Array(-64, 0, 576, 0, 576, -64, 1408, -64, 1408, -512, 1792, -576, 1832, -560, 1864, -536, 2880, 560, 3264, 808, 3776, 992, 4288, 1088, 4864, 1152, 5248, 1152, 5376, 1136, 5504, 1112, 5568, 1080, 5632, 1024, 5632, 1536, 1792, 1536, -896, 1536, -896, 1088, -64, 1088)
+
+[node name="Outline" parent="Ground/Land2" index="1"]
+points = PackedVector2Array(-64, 0, 576, 0, 576, -64, 1408, -64, 1408, -512, 1792, -576, 1832, -560, 1864, -536, 2880, 560, 3264, 808, 3776, 992, 4288, 1088, 4864, 1152, 5248, 1152, 5376, 1136, 5504, 1112, 5568, 1080, 5632, 1024, 5632, 1536, 1792, 1536, -896, 1536, -896, 1088, -64, 1088, -64, 0)
+
+[node name="Land4" parent="Ground" instance=ExtResource("3")]
+position = Vector2(14472, -512)
+
+[node name="Polygon2D" parent="Ground/Land4" index="0"]
+polygon = PackedVector2Array(0, 0, 1848, 0, 1848, -384, 1336, -384, 1336, -512, 1848, -512, 1848, -896.685, 1592, -896, 1592, -1024, 1848, -1024, 1848, -1856, 1976, -1856, 1976, 0, 3000, 0, 3000, -256, 2744, -256, 2744, -320, 3192, -320, 3576, -704, 3576, -768, 3768, -768, 3856, -808, 3896, -896, 3896, -1280, 3512, -1280, 3512, -1408, 4216, -1408, 4216, -1856, 4408, -1856, 4448, -1848, 4472, -1840, 4504, -1816, 4528, -1792, 6136, 128, 6168, 152, 6216, 168, 6264, 176, 6391.51, 186.626, 6520, 192, 6520, 512, 0, 512)
+
+[node name="Outline" parent="Ground/Land4" index="1"]
+points = PackedVector2Array(0, 0, 1848, 0, 1848, -384, 1336, -384, 1336, -512, 1848, -512, 1848, -896.685, 1592, -896, 1592, -1024, 1848, -1024, 1848, -1856, 1976, -1856, 1976, 0, 3000, 0, 3000, -256, 2744, -256, 2744, -320, 3192, -320, 3576, -704, 3576, -768, 3768, -768, 3856, -808, 3896, -896, 3896, -1280, 3512, -1280, 3512, -1408, 4216, -1408, 4216, -1856, 4408, -1856, 4448, -1848, 4472, -1840, 4504, -1816, 4528, -1792, 6136, 128, 6168, 152, 6216, 168, 6264, 176, 6391.51, 186.626, 6520, 192, 6520, 512, 0, 512, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Land5" parent="Ground" instance=ExtResource("3")]
+position = Vector2(16320, -2816)
+
+[node name="Polygon2D" parent="Ground/Land5" index="0"]
+polygon = PackedVector2Array(-192, 0, 2176, -448, 2176, 128, 1280, 704, 1152, 896, 1152, 1088, 1184, 1192, 1280, 1280, 1472, 1280, 1472, 1344, 960, 1664, 960, 1280, 768, 1280, 768, 1152, 768, 1088, 896, 1088, 896, 832, 576, 832, 576, 1536, 768, 1536, 448, 1920, 448, 320, 384, 192, 256, 128, -192, 128)
+
+[node name="Outline" parent="Ground/Land5" index="1"]
+points = PackedVector2Array(-192, 0, 2176, -448, 2176, 128, 1280, 704, 1152, 896, 1152, 1088, 1184, 1192, 1280, 1280, 1472, 1280, 1472, 1344, 960, 1664, 960, 1280, 768, 1280, 768, 1152, 768, 1088, 896, 1088, 896, 832, 576, 832, 576, 1536, 768, 1536, 448, 1920, 448, 320, 384, 192, 256, 128, -192, 128, -192, 0)
+metadata/_edit_lock_ = true
+
+[node name="Land6" parent="Ground" instance=ExtResource("3")]
+position = Vector2(20992, -640)
+
+[node name="Polygon2D" parent="Ground/Land6" index="0"]
+polygon = PackedVector2Array(1088, -256, 2624, -320, 5688, -320, 5688, 640, 1024, 640, 1024, 64, 1792, 64, 1792, -192, 1408, -192, 1088, -192)
+
+[node name="Outline" parent="Ground/Land6" index="1"]
+points = PackedVector2Array(1088, -256, 2624, -320, 5688, -320, 5688, 640, 1024, 640, 1024, 64, 1792, 64, 1792, -192, 1408, -192, 1088, -192, 1088, -256)
+metadata/_edit_lock_ = true
+
+[node name="Platform3" parent="Ground" instance=ExtResource("1")]
+position = Vector2(5248, -1280)
+collision_mask = 0
+
+[node name="Platform4" parent="Ground" instance=ExtResource("1")]
+position = Vector2(6016, -1408)
+collision_mask = 0
+
+[node name="Platform5" parent="Ground" instance=ExtResource("1")]
+position = Vector2(6784, -1536)
+collision_mask = 0
+
+[node name="Platform6" parent="Ground" instance=ExtResource("1")]
+position = Vector2(10624, -1408)
+collision_mask = 0
+
+[node name="Polygon2D" parent="Ground/Platform6" index="0"]
+polygon = PackedVector2Array(640, 192, 0, 64, 0, 0, 448, 0)
+
+[node name="Outline" parent="Ground/Platform6" index="1"]
+points = PackedVector2Array(640, 192, 0, 64, 0, 0, 448, 0, 640, 192)
+
+[node name="Beans" type="Node2D" parent="."]
+
+[node name="GreenBean3" parent="Beans" instance=ExtResource("8")]
+position = Vector2(1504, -480)
+collision_layer = 128
+
+[node name="GreenBean15" parent="Beans" instance=ExtResource("8")]
+position = Vector2(1184, -480)
+collision_layer = 128
+
+[node name="GreenBean5" parent="Beans" instance=ExtResource("8")]
+position = Vector2(1760, -672)
+collision_layer = 128
+
+[node name="GreenBean7" parent="Beans" instance=ExtResource("8")]
+position = Vector2(3936, -736)
+collision_layer = 128
+
+[node name="GreenBean8" parent="Beans" instance=ExtResource("8")]
+position = Vector2(4192, -1120)
+collision_layer = 128
+
+[node name="GreenBean9" parent="Beans" instance=ExtResource("8")]
+position = Vector2(4512, -1312)
+collision_layer = 128
+
+[node name="GreenBean10" parent="Beans" instance=ExtResource("8")]
+position = Vector2(5248, -1312)
+collision_layer = 128
+
+[node name="GreenBean21" parent="Beans" instance=ExtResource("8")]
+position = Vector2(7264, -1504)
+collision_layer = 128
+color = 1
+
+[node name="GreenBean22" parent="Beans" instance=ExtResource("8")]
+position = Vector2(7264, -992)
+collision_layer = 128
+color = 1
+
+[node name="GreenBean77" parent="Beans" instance=ExtResource("8")]
+position = Vector2(7264, -1248)
+collision_layer = 128
+color = 1
+
+[node name="GreenBean26" parent="Beans" instance=ExtResource("8")]
+position = Vector2(6944, -480)
+collision_layer = 128
+color = 1
+
+[node name="GreenBean27" parent="Beans" instance=ExtResource("8")]
+position = Vector2(7264, -736)
+collision_layer = 128
+color = 1
+
+[node name="GreenBean28" parent="Beans" instance=ExtResource("8")]
+position = Vector2(6560, -480)
+collision_layer = 128
+color = 1
+
+[node name="GreenBean75" parent="Beans" instance=ExtResource("8")]
+position = Vector2(6752, -480)
+collision_layer = 128
+color = 1
+
+[node name="GreenBean76" parent="Beans" instance=ExtResource("8")]
+position = Vector2(7136, -480)
+collision_layer = 128
+color = 1
+
+[node name="GreenBean11" parent="Beans" instance=ExtResource("8")]
+position = Vector2(6016, -1440)
+collision_layer = 128
+
+[node name="GreenBean12" parent="Beans" instance=ExtResource("8")]
+position = Vector2(6784, -1568)
+collision_layer = 128
+
+[node name="GreenBean16" parent="Beans" instance=ExtResource("8")]
+position = Vector2(19168, -2208)
+collision_layer = 128
+
+[node name="GreenBean17" parent="Beans" instance=ExtResource("8")]
+position = Vector2(19488, -1824)
+collision_layer = 128
+
+[node name="GreenBean18" parent="Beans" instance=ExtResource("8")]
+position = Vector2(19808, -1440)
+collision_layer = 128
+
+[node name="GreenBean19" parent="Beans" instance=ExtResource("8")]
+position = Vector2(20128, -1056)
+collision_layer = 128
+
+[node name="GreenBean32" parent="Beans" instance=ExtResource("8")]
+position = Vector2(20448, -672)
+collision_layer = 128
+
+[node name="GreenBean33" parent="Beans" instance=ExtResource("8")]
+position = Vector2(20704, -416)
+collision_layer = 128
+
+[node name="GreenBean80" parent="Beans" instance=ExtResource("8")]
+position = Vector2(21024, -544)
+collision_layer = 128
+
+[node name="GreenBean84" parent="Beans" instance=ExtResource("8")]
+position = Vector2(22304, -968)
+collision_layer = 128
+
+[node name="GreenBean85" parent="Beans" instance=ExtResource("8")]
+position = Vector2(22688, -992)
+collision_layer = 128
+
+[node name="GreenBean86" parent="Beans" instance=ExtResource("8")]
+position = Vector2(23136, -1000)
+collision_layer = 128
+
+[node name="GreenBean13" parent="Beans" instance=ExtResource("8")]
+position = Vector2(8736, -2080)
+collision_layer = 128
+
+[node name="GreenBean20" parent="Beans" instance=ExtResource("8")]
+position = Vector2(7520, -1568)
+collision_layer = 128
+
+[node name="GreenBean25" parent="Beans" instance=ExtResource("8")]
+position = Vector2(8096, -1632)
+collision_layer = 128
+
+[node name="GreenBean31" parent="Beans" instance=ExtResource("8")]
+position = Vector2(8352, -1632)
+collision_layer = 128
+
+[node name="GreenBean14" parent="Beans" instance=ExtResource("8")]
+position = Vector2(9504, -1952)
+collision_layer = 128
+
+[node name="GreenBean34" parent="Beans" instance=ExtResource("8")]
+position = Vector2(9120, -2144)
+collision_layer = 128
+
+[node name="GreenBean23" parent="Beans" instance=ExtResource("8")]
+position = Vector2(11392, -1152)
+collision_layer = 128
+color = 2
+
+[node name="GreenBean35" parent="Beans" instance=ExtResource("8")]
+position = Vector2(10016, -1504)
+collision_layer = 128
+color = 2
+
+[node name="GreenBean78" parent="Beans" instance=ExtResource("8")]
+position = Vector2(10592, -1504)
+collision_layer = 128
+color = 2
+
+[node name="GreenBean40" parent="Beans" instance=ExtResource("8")]
+position = Vector2(10272, -1632)
+collision_layer = 128
+color = 2
+
+[node name="GreenBean29" parent="Beans" instance=ExtResource("8")]
+position = Vector2(10720, -1440)
+collision_layer = 128
+color = 2
+
+[node name="GreenBean30" parent="Beans" instance=ExtResource("8")]
+position = Vector2(11072, -1440)
+collision_layer = 128
+color = 2
+
+[node name="GreenBean24" parent="Beans" instance=ExtResource("8")]
+position = Vector2(11264, -1280)
+collision_layer = 128
+color = 2
+
+[node name="GreenBean37" parent="Beans" instance=ExtResource("8")]
+position = Vector2(9760, -1696)
+collision_layer = 128
+
+[node name="GreenBean38" parent="Beans" instance=ExtResource("8")]
+position = Vector2(12512, -432)
+collision_layer = 128
+
+[node name="GreenBean36" parent="Beans" instance=ExtResource("8")]
+position = Vector2(13056, -584)
+collision_layer = 128
+
+[node name="GreenBean79" parent="Beans" instance=ExtResource("8")]
+position = Vector2(14560, -544)
+collision_layer = 128
+
+[node name="GreenBean41" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16256, -576)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean42" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16256, -704)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean43" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16256, -832)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean44" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16128, -576)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean45" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16128, -704)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean46" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16128, -832)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean47" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16000, -576)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean48" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16000, -704)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean49" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16000, -832)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean50" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16256, -1088)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean51" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16256, -1216)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean52" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16256, -1344)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean53" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16128, -1088)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean54" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16128, -1216)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean55" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16128, -1344)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean56" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16960, -1472)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean59" parent="Beans" instance=ExtResource("8")]
+position = Vector2(17088, -1472)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean60" parent="Beans" instance=ExtResource("8")]
+position = Vector2(17216, -1408)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean61" parent="Beans" instance=ExtResource("8")]
+position = Vector2(17152, -1280)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean62" parent="Beans" instance=ExtResource("8")]
+position = Vector2(17152, -1152)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean71" parent="Beans" instance=ExtResource("8")]
+position = Vector2(17408, -704)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean72" parent="Beans" instance=ExtResource("8")]
+position = Vector2(17408, -576)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean73" parent="Beans" instance=ExtResource("8")]
+position = Vector2(17280, -704)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean74" parent="Beans" instance=ExtResource("8")]
+position = Vector2(17280, -576)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean57" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16960, -1600)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean58" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16960, -1728)
+collision_layer = 128
+color = 3
+
+[node name="GreenBean63" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16192, -2880)
+collision_layer = 128
+color = 4
+
+[node name="GreenBean64" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16576, -2944)
+collision_layer = 128
+color = 4
+
+[node name="GreenBean65" parent="Beans" instance=ExtResource("8")]
+position = Vector2(16960, -3032)
+collision_layer = 128
+color = 4
+
+[node name="GreenBean66" parent="Beans" instance=ExtResource("8")]
+position = Vector2(17280, -3088)
+collision_layer = 128
+color = 4
+
+[node name="GreenBean67" parent="Beans" instance=ExtResource("8")]
+position = Vector2(17600, -3152)
+collision_layer = 128
+color = 4
+
+[node name="GreenBean68" parent="Beans" instance=ExtResource("8")]
+position = Vector2(17984, -3224)
+collision_layer = 128
+color = 4
+
+[node name="GreenBean69" parent="Beans" instance=ExtResource("8")]
+position = Vector2(18368, -3296)
+collision_layer = 128
+color = 4
+
+[node name="GreenBean70" parent="Beans" instance=ExtResource("8")]
+position = Vector2(18568, -3328)
+collision_layer = 128
+color = 4
+
+[node name="GreenBean81" parent="Beans" instance=ExtResource("8")]
+position = Vector2(21984, -864)
+collision_layer = 128
+color = 4
+
+[node name="GreenBean82" parent="Beans" instance=ExtResource("8")]
+position = Vector2(22176, -632)
+collision_layer = 128
+color = 4
+
+[node name="GreenBean83" parent="Beans" instance=ExtResource("8")]
+position = Vector2(22432, -632)
+collision_layer = 128
+color = 4
+
+[node name="Spuds" type="Node2D" parent="."]
+
+[node name="Spud" parent="Spuds" instance=ExtResource("11")]
+position = Vector2(23936, -1024)
+
+[node name="Spud2" parent="Spuds" instance=ExtResource("11")]
+position = Vector2(10880, -1472)
+color = 2
+
+[node name="Spud3" parent="Spuds" instance=ExtResource("11")]
+position = Vector2(7296, -512)
+color = 1
+
+[node name="Spud4" parent="Spuds" instance=ExtResource("11")]
+position = Vector2(17152, -1792)
+color = 3
+
+[node name="Spud5" parent="Spuds" instance=ExtResource("11")]
+position = Vector2(22720, -640)
+color = 4
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("2")]
+position = Vector2(2944, -512)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("2")]
+position = Vector2(11048, -680)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("2")]
+position = Vector2(15488, -576)
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource("2")]
+position = Vector2(17088, -576)
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource("9")]
+position = Vector2(13760, -600)
+
+[node name="Interactable" type="Node2D" parent="."]
+
+[node name="Spring" parent="Interactable" instance=ExtResource("4")]
+position = Vector2(15616, -520)
+
+[node name="Spring2" parent="Interactable" instance=ExtResource("4")]
+position = Vector2(15872, -1032)
+
+[node name="Spring3" parent="Interactable" instance=ExtResource("4")]
+position = Vector2(16128, -1544)
+
+[node name="Spring5" parent="Interactable" instance=ExtResource("4")]
+position = Vector2(4864, -448)
+
+[node name="Spring6" parent="Interactable" instance=ExtResource("4")]
+position = Vector2(20960, -328)
+
+[node name="Exit" parent="." instance=ExtResource("10_r1ixd")]
+position = Vector2(24448, -968)
+
+[editable path="Ground/Land"]
+[editable path="Ground/Land3"]
+[editable path="Ground/Land2"]
+[editable path="Ground/Land4"]
+[editable path="Ground/Land5"]
+[editable path="Ground/Land6"]
+[editable path="Ground/Platform6"]

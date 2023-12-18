@@ -1,0 +1,157 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqrpkotb6ls1v"]
+
+[ext_resource type="Theme" uid="uid://b441552tienkm" path="res://main_theme.theme" id="1_4ncvt"]
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="2_8lktc"]
+[ext_resource type="PackedScene" uid="uid://lif5pj4odeva" path="res://scenes/main_menu/campaign/campaign.tscn" id="3_8jj2j"]
+[ext_resource type="PackedScene" uid="uid://358kf845olc5" path="res://scenes/main_menu/status_panel/status_panel.tscn" id="4_oqqe0"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_7arig"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4ncvt")
+script = ExtResource("2_8lktc")
+
+[node name="Campaign" parent="." instance=ExtResource("3_8jj2j")]
+layout_mode = 1
+
+[node name="Title" type="Label" parent="Campaign"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 153.0
+offset_bottom = 193.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 48
+text = "Campaign"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChallengeLevels" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4ncvt")
+
+[node name="Title" type="Label" parent="ChallengeLevels"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 153.0
+offset_bottom = 219.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 48
+text = "Challenge Levels"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComingSoon" type="Label" parent="ChallengeLevels"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 120
+text = "Coming Soon!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shop" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4ncvt")
+
+[node name="Title" type="Label" parent="Shop"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 153.0
+offset_bottom = 219.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 48
+text = "Shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComingSoon" type="Label" parent="Shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 120
+text = "Coming Soon!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatusPanel" parent="." instance=ExtResource("4_oqqe0")]
+layout_mode = 1
+offset_bottom = 136.0
+
+[node name="ModeButtons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -120.0
+offset_right = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CampaignButton" type="Button" parent="ModeButtons"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_7arig")
+text = "Campaign"
+
+[node name="ChallengeLevelButton" type="Button" parent="ModeButtons"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_7arig")
+text = "Challenge Levels"
+
+[node name="ShopButton" type="Button" parent="ModeButtons"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_7arig")
+text = "Shop"
+
+[connection signal="toggled" from="ModeButtons/CampaignButton" to="." method="_on_campaign_button_toggled"]
+[connection signal="toggled" from="ModeButtons/ChallengeLevelButton" to="." method="_on_challenge_level_button_toggled"]
+[connection signal="toggled" from="ModeButtons/ShopButton" to="." method="_on_shop_button_toggled"]

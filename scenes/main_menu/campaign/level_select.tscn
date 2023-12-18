@@ -1,0 +1,281 @@
+[gd_scene load_steps=15 format=3 uid="uid://jbml4bbnxosi"]
+
+[ext_resource type="Script" path="res://scenes/main_menu/campaign/level_select.gd" id="1_jh357"]
+[ext_resource type="Theme" uid="uid://b441552tienkm" path="res://main_theme.theme" id="1_ydymt"]
+[ext_resource type="PackedScene" uid="uid://dkti1g6425h16" path="res://scenes/main_menu/campaign/level_icon.tscn" id="2_jbtot"]
+[ext_resource type="Texture2D" uid="uid://crk8u4q5h81a7" path="res://global/particles/object_atlas.png" id="3_v2xvq"]
+[ext_resource type="Texture2D" uid="uid://cl4wygiy4dsru" path="res://scenes/player/flick_the_bean.png" id="5_b2ul5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eop72"]
+atlas = ExtResource("3_v2xvq")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wubse"]
+atlas = ExtResource("3_v2xvq")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbsmq"]
+atlas = ExtResource("3_v2xvq")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_428kx"]
+atlas = ExtResource("3_v2xvq")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsb1u"]
+atlas = ExtResource("3_v2xvq")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwfak"]
+atlas = ExtResource("3_v2xvq")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="Animation" id="Animation_f8gr6"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 29]
+}
+
+[sub_resource type="Animation" id="Animation_rxxa2"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30, 59]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntmfb"]
+_data = {
+"Idle": SubResource("Animation_f8gr6"),
+"Walk": SubResource("Animation_rxxa2")
+}
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ydymt")
+script = ExtResource("1_jh357")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 192.0
+offset_bottom = 256.0
+text = "< Back"
+
+[node name="LevelIcon1" parent="." instance=ExtResource("2_jbtot")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 64.0
+offset_top = 640.0
+offset_right = 320.0
+offset_bottom = 896.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="LevelIcon2" parent="." instance=ExtResource("2_jbtot")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 448.0
+offset_top = 576.0
+offset_right = 704.0
+offset_bottom = 832.0
+grow_horizontal = 1
+grow_vertical = 1
+level_idx = 2
+
+[node name="LevelIcon3" parent="." instance=ExtResource("2_jbtot")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 832.0
+offset_top = 512.0
+offset_right = 1088.0
+offset_bottom = 768.0
+grow_horizontal = 1
+grow_vertical = 1
+level_idx = 3
+
+[node name="LevelIcon4" parent="." instance=ExtResource("2_jbtot")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1216.0
+offset_top = 576.0
+offset_right = 1472.0
+offset_bottom = 832.0
+grow_horizontal = 1
+grow_vertical = 1
+level_idx = 4
+
+[node name="LevelIcon5" parent="." instance=ExtResource("2_jbtot")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1600.0
+offset_top = 640.0
+offset_right = 1856.0
+offset_bottom = 896.0
+grow_horizontal = 1
+grow_vertical = 1
+level_idx = 5
+
+[node name="Details" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = 152.0
+offset_bottom = -568.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Details"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Details/MarginContainer"]
+layout_mode = 2
+
+[node name="LevelTitle" type="Label" parent="Details/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Level 1-1: First Flicks"
+horizontal_alignment = 1
+
+[node name="BestRecord" type="Label" parent="Details/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Best Level Record:"
+horizontal_alignment = 1
+
+[node name="BestRank" type="Label" parent="Details/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Rank: S"
+horizontal_alignment = 1
+
+[node name="BestTime" type="Label" parent="Details/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Best Time: 00:00.00"
+horizontal_alignment = 1
+
+[node name="MostBeans" type="Label" parent="Details/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Most Beans: 99"
+horizontal_alignment = 1
+
+[node name="Spuds" type="HBoxContainer" parent="Details/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="green" type="TextureRect" parent="Details/MarginContainer/VBoxContainer/Spuds"]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.572549)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_eop72")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="yellow" type="TextureRect" parent="Details/MarginContainer/VBoxContainer/Spuds"]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.572549)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_wubse")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="blue" type="TextureRect" parent="Details/MarginContainer/VBoxContainer/Spuds"]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.572549)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_nbsmq")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="red" type="TextureRect" parent="Details/MarginContainer/VBoxContainer/Spuds"]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.572549)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_428kx")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="white" type="TextureRect" parent="Details/MarginContainer/VBoxContainer/Spuds"]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.572549)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_vsb1u")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="black" type="TextureRect" parent="Details/MarginContainer/VBoxContainer/Spuds"]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.572549)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_hwfak")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="PlayerIcon" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(8, 0)
+texture = ExtResource("5_b2ul5")
+hframes = 16
+vframes = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerIcon"]
+libraries = {
+"": SubResource("AnimationLibrary_ntmfb")
+}
+autoplay = "Idle"
+
+[connection signal="button_up" from="BackButton" to="." method="_on_back_button_button_up"]

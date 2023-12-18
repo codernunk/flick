@@ -1,0 +1,191 @@
+[gd_scene load_steps=9 format=3 uid="uid://o7i8nn8rlao7"]
+
+[ext_resource type="Theme" uid="uid://b441552tienkm" path="res://main_theme.theme" id="1_cev46"]
+[ext_resource type="Script" path="res://scenes/main_menu/campaign/world_select.gd" id="1_lybhv"]
+[ext_resource type="PackedScene" uid="uid://dhmgpsocikf48" path="res://scenes/main_menu/campaign/world_icon.tscn" id="3_xonnt"]
+[ext_resource type="PackedScene" uid="uid://do43a5lx36wnv" path="res://scenes/main_menu/campaign/world_select_level_details.tscn" id="4_x1124"]
+[ext_resource type="Texture2D" uid="uid://cl4wygiy4dsru" path="res://scenes/player/flick_the_bean.png" id="5_d0wr4"]
+
+[sub_resource type="Animation" id="Animation_f8gr6"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 29]
+}
+
+[sub_resource type="Animation" id="Animation_rxxa2"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30, 59]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntmfb"]
+_data = {
+"Idle": SubResource("Animation_f8gr6"),
+"Walk": SubResource("Animation_rxxa2")
+}
+
+[node name="WorldSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cev46")
+script = ExtResource("1_lybhv")
+
+[node name="WorldIcon1" parent="." instance=ExtResource("3_xonnt")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.2
+anchor_top = 0.637037
+anchor_right = 0.333333
+anchor_bottom = 0.874074
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="WorldIcon2" parent="." instance=ExtResource("3_xonnt")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.0333333
+anchor_top = 0.518519
+anchor_right = 0.166666
+anchor_bottom = 0.755556
+grow_horizontal = 1
+grow_vertical = 1
+world_idx = 2
+
+[node name="WorldIcon3" parent="." instance=ExtResource("3_xonnt")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.366667
+anchor_top = 0.518519
+anchor_right = 0.5
+anchor_bottom = 0.755556
+grow_horizontal = 1
+grow_vertical = 1
+world_idx = 3
+
+[node name="WorldIcon4" parent="." instance=ExtResource("3_xonnt")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.0666667
+anchor_top = 0.222222
+anchor_right = 0.2
+anchor_bottom = 0.459259
+grow_horizontal = 1
+grow_vertical = 1
+world_idx = 4
+
+[node name="WorldIcon5" parent="." instance=ExtResource("3_xonnt")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.333333
+anchor_top = 0.222222
+anchor_right = 0.466666
+anchor_bottom = 0.459259
+grow_horizontal = 1
+grow_vertical = 1
+world_idx = 5
+
+[node name="WorldIcon6" parent="." instance=ExtResource("3_xonnt")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.2
+anchor_top = 0.340741
+anchor_right = 0.333333
+anchor_bottom = 0.577778
+grow_horizontal = 1
+grow_vertical = 1
+world_idx = 6
+
+[node name="Details" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.237
+anchor_right = 1.004
+anchor_bottom = 0.889
+offset_top = 0.039978
+offset_right = -7.68018
+offset_bottom = -0.120056
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_cev46")
+
+[node name="MarginContainer" type="MarginContainer" parent="Details"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Details/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="WorldTitle" type="Label" parent="Details/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "World 1: Flick Fields"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Details/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "% Completed"
+horizontal_alignment = 1
+
+[node name="Level1" parent="Details/MarginContainer/VBoxContainer" instance=ExtResource("4_x1124")]
+layout_mode = 2
+
+[node name="Level2" parent="Details/MarginContainer/VBoxContainer" instance=ExtResource("4_x1124")]
+layout_mode = 2
+
+[node name="Level3" parent="Details/MarginContainer/VBoxContainer" instance=ExtResource("4_x1124")]
+layout_mode = 2
+
+[node name="Level4" parent="Details/MarginContainer/VBoxContainer" instance=ExtResource("4_x1124")]
+layout_mode = 2
+
+[node name="Level5" parent="Details/MarginContainer/VBoxContainer" instance=ExtResource("4_x1124")]
+layout_mode = 2
+
+[node name="PlayerIcon" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(528, 784)
+texture = ExtResource("5_d0wr4")
+hframes = 16
+vframes = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerIcon"]
+libraries = {
+"": SubResource("AnimationLibrary_ntmfb")
+}
+autoplay = "Idle"

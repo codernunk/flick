@@ -1,0 +1,151 @@
+[gd_scene load_steps=11 format=3 uid="uid://33okuj8j1cn"]
+
+[ext_resource type="Texture2D" uid="uid://crk8u4q5h81a7" path="res://global/particles/object_atlas.png" id="1"]
+[ext_resource type="Script" path="res://scenes/bean/bean.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://khqdwynnq6lm" path="res://global/particles/fx_bubble.png" id="3_ky3t2"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="3"]
+resource_name = "Idle"
+length = 2.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-30.0, 30.0, -30.0, 30.0, -30.0]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="Animation" id="4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i84ks"]
+_data = {
+"Idle": SubResource("3"),
+"RESET": SubResource("4")
+}
+
+[sub_resource type="Curve" id="Curve_ywe5v"]
+min_value = 1.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1.50909), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_eg54w"]
+colors = PackedColorArray(1, 1, 1, 0.709804, 1, 1, 1, 0)
+
+[node name="Bean" type="Area2D" groups=["pickup"]]
+z_index = 1
+collision_layer = 0
+monitorable = false
+script = ExtResource("2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+rotation = 0.523599
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1")
+hframes = 6
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="RefShape" type="CollisionShape2D" parent="."]
+shape = SubResource("2")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i84ks")
+}
+autoplay = "Idle"
+
+[node name="CollectParticles" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 1
+texture = ExtResource("3_ky3t2")
+emission_shape = 3
+emission_rect_extents = Vector2(16, 16)
+spread = 90.0
+gravity = Vector2(0, -10)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_ywe5v")
+color = Color(0, 1, 0, 1)
+color_ramp = SubResource("Gradient_eg54w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,616 @@
+[gd_scene load_steps=26 format=3 uid="uid://pqq33f3hpkxw"]
+
+[ext_resource type="Script" path="res://scenes/loading_screen/loading_screen.gd" id="1_qq5vt"]
+[ext_resource type="Theme" uid="uid://b441552tienkm" path="res://main_theme.theme" id="2_dgfqq"]
+[ext_resource type="Shader" path="res://scenes/loading_screen/loading_screen.gdshader" id="3_0mpdr"]
+[ext_resource type="Texture2D" uid="uid://cpdqv1s0gj4l1" path="res://scenes/worlds/1/background_near.png" id="4_blmik"]
+[ext_resource type="Texture2D" uid="uid://cl4wygiy4dsru" path="res://scenes/player/flick_the_bean.png" id="5_gws5u"]
+
+[sub_resource type="Animation" id="Animation_lf52k"]
+resource_name = "Complete"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, -0.0872665, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xcv53"]
+resource_name = "Loading"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ur7y2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uh0b2"]
+_data = {
+"Complete": SubResource("Animation_lf52k"),
+"Loading": SubResource("Animation_xcv53"),
+"RESET": SubResource("Animation_ur7y2")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20v05"]
+shader = ExtResource("3_0mpdr")
+shader_parameter/multiply_color = Color(0, 0.168627, 0, 1)
+
+[sub_resource type="Animation" id="Animation_gaa88"]
+resource_name = "MountainMove"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1920, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fjlms"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1664, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qdwmx"]
+_data = {
+"MountainMove": SubResource("Animation_gaa88"),
+"RESET": SubResource("Animation_fjlms")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3qyr"]
+shader = ExtResource("3_0mpdr")
+shader_parameter/multiply_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_7ed8b"]
+resource_name = "Walk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30, 59]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ercb5"]
+_data = {
+"Walk": SubResource("Animation_7ed8b")
+}
+
+[sub_resource type="Animation" id="Animation_x7spv"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_svoox"]
+resource_name = "Waiting"
+length = 2.0
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flick:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-64, 768), Vector2(1984, 768)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k83kt"]
+_data = {
+"RESET": SubResource("Animation_x7spv"),
+"Waiting": SubResource("Animation_svoox")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgl4q"]
+shader = ExtResource("3_0mpdr")
+shader_parameter/multiply_color = Color(0, 0.45098, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_kqkk4"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_16rnf"]
+gradient = SubResource("Gradient_kqkk4")
+
+[sub_resource type="Animation" id="Animation_p3su6"]
+resource_name = "Init"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TipLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3840, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TipLabel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TipText:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TipContainer:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 1), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Animation:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TipText:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3840, 120), Vector2(0, 120)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"open_new_scene"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_y0wo4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animation/Flick:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animation:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TipContainer:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%TipLabel:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1920, 86)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%TipLabel:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%TipLabel:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%TipText:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1920, 112)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("%TipText:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 120)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("%TipText:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r34os"]
+_data = {
+"Init": SubResource("Animation_p3su6"),
+"RESET": SubResource("Animation_y0wo4")
+}
+
+[node name="LoadingScreen" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_qq5vt")
+next_scene_path = "res://scenes/worlds/1/1_1.tscn"
+
+[node name="LoadingScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dgfqq")
+
+[node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TipLabel" type="Label" parent="LoadingScreen"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 86.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 64
+text = "Tip: Bouncing"
+horizontal_alignment = 1
+
+[node name="TipText" type="Label" parent="LoadingScreen"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 120.0
+offset_bottom = 232.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 28
+text = "Bouncing gives more height than a standard jump or flick. To bounce, jump and then flick toward the ground."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="LoadingLabel" type="Label" parent="LoadingScreen"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -131.5
+offset_top = -584.0
+offset_right = 131.5
+offset_bottom = -488.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 72
+text = "Loading..."
+
+[node name="AnimationPlayerLoading" type="AnimationPlayer" parent="LoadingScreen/LoadingLabel"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_uh0b2")
+}
+autoplay = "Loading"
+
+[node name="Animation" type="Node2D" parent="LoadingScreen"]
+
+[node name="Mountains" type="Node2D" parent="LoadingScreen/Animation"]
+position = Vector2(-1664, 0)
+
+[node name="Mountain1" type="Sprite2D" parent="LoadingScreen/Animation/Mountains"]
+material = SubResource("ShaderMaterial_20v05")
+position = Vector2(480, 624)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_blmik")
+
+[node name="Mountain2" type="Sprite2D" parent="LoadingScreen/Animation/Mountains"]
+material = SubResource("ShaderMaterial_20v05")
+position = Vector2(1440, 624)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_blmik")
+
+[node name="Mountain3" type="Sprite2D" parent="LoadingScreen/Animation/Mountains"]
+material = SubResource("ShaderMaterial_20v05")
+position = Vector2(2400, 624)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_blmik")
+
+[node name="Mountain4" type="Sprite2D" parent="LoadingScreen/Animation/Mountains"]
+material = SubResource("ShaderMaterial_20v05")
+position = Vector2(3360, 624)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_blmik")
+
+[node name="AnimationPlayerMountain" type="AnimationPlayer" parent="LoadingScreen/Animation/Mountains"]
+libraries = {
+"": SubResource("AnimationLibrary_qdwmx")
+}
+autoplay = "MountainMove"
+
+[node name="Flick" type="Sprite2D" parent="LoadingScreen/Animation"]
+z_index = 2
+material = SubResource("ShaderMaterial_i3qyr")
+position = Vector2(-64, 768)
+texture = ExtResource("5_gws5u")
+hframes = 16
+vframes = 16
+frame = 30
+
+[node name="AnimationPlayerWalk" type="AnimationPlayer" parent="LoadingScreen/Animation/Flick"]
+libraries = {
+"": SubResource("AnimationLibrary_ercb5")
+}
+autoplay = "Walk"
+
+[node name="AnimationPlayerPosition" type="AnimationPlayer" parent="LoadingScreen/Animation/Flick"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_k83kt")
+}
+autoplay = "Waiting"
+
+[node name="Land" type="Sprite2D" parent="LoadingScreen/Animation"]
+material = SubResource("ShaderMaterial_pgl4q")
+position = Vector2(960, 1023.5)
+scale = Vector2(7.5, 439)
+texture = SubResource("GradientTexture1D_16rnf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../LoadingScreen")
+libraries = {
+"": SubResource("AnimationLibrary_r34os")
+}
+autoplay = "Init"
+
+[connection signal="gui_input" from="LoadingScreen/ColorRect" to="." method="_on_gui_input"]

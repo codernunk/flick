@@ -1,0 +1,475 @@
+[gd_scene load_steps=19 format=3 uid="uid://358kf845olc5"]
+
+[ext_resource type="Theme" uid="uid://b441552tienkm" path="res://main_theme.theme" id="1_jkejm"]
+[ext_resource type="Script" path="res://scenes/main_menu/status_panel/status_panel.gd" id="2_xtm24"]
+[ext_resource type="Texture2D" uid="uid://crk8u4q5h81a7" path="res://global/particles/object_atlas.png" id="3_djgl0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7uyd"]
+atlas = ExtResource("3_djgl0")
+region = Rect2(0, 0, 128, 128)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_knmvs"]
+load_path = "res://.godot/imported/object_atlas.png-a8c1b30d3cca1e3cf1a7e1611e73fde0.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4w5a"]
+atlas = SubResource("CompressedTexture2D_knmvs")
+region = Rect2(128, 0, 128, 128)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_my102"]
+load_path = "res://.godot/imported/object_atlas.png-a8c1b30d3cca1e3cf1a7e1611e73fde0.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jswq"]
+atlas = SubResource("CompressedTexture2D_my102")
+region = Rect2(256, 0, 128, 128)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6k3k"]
+atlas = SubResource("CompressedTexture2D_knmvs")
+region = Rect2(384, 0, 128, 128)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bylah"]
+atlas = SubResource("CompressedTexture2D_knmvs")
+region = Rect2(512, 0, 128, 128)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buj42"]
+atlas = SubResource("CompressedTexture2D_knmvs")
+region = Rect2(640, 0, 128, 128)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lredl"]
+atlas = SubResource("CompressedTexture2D_knmvs")
+region = Rect2(0, 128, 128, 128)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5bh3b"]
+load_path = "res://.godot/imported/object_atlas.png-a8c1b30d3cca1e3cf1a7e1611e73fde0.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyj5m"]
+atlas = SubResource("CompressedTexture2D_5bh3b")
+region = Rect2(128, 128, 128, 128)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrfit"]
+atlas = SubResource("CompressedTexture2D_knmvs")
+region = Rect2(256, 128, 128, 128)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_to2oq"]
+atlas = SubResource("CompressedTexture2D_knmvs")
+region = Rect2(384, 128, 128, 128)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bagj"]
+atlas = SubResource("CompressedTexture2D_knmvs")
+region = Rect2(512, 128, 128, 128)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k41oo"]
+atlas = SubResource("CompressedTexture2D_knmvs")
+region = Rect2(640, 128, 128, 128)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[node name="StatusPanel" type="Panel"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 128.0
+offset_right = -128.0
+offset_bottom = 144.0
+grow_horizontal = 2
+theme = ExtResource("1_jkejm")
+script = ExtResource("2_xtm24")
+
+[node name="BeanCounts" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 272.0
+offset_top = 8.0
+offset_right = -136.0
+offset_bottom = 72.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="green" type="Control" parent="BeanCounts"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BeanCounts/green"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_k7uyd")
+expand_mode = 2
+
+[node name="Shadow" type="TextureRect" parent="BeanCounts/green/Icon"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.392157)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 68.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_k7uyd")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="BeanCounts/green"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 129.873
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "x0"
+
+[node name="yellow" type="Control" parent="BeanCounts"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BeanCounts/yellow"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_p4w5a")
+expand_mode = 2
+
+[node name="Shadow" type="TextureRect" parent="BeanCounts/yellow/Icon"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.392157)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 68.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_p4w5a")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="BeanCounts/yellow"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 129.873
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "x0"
+
+[node name="blue" type="Control" parent="BeanCounts"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BeanCounts/blue"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_5jswq")
+expand_mode = 2
+
+[node name="Shadow" type="TextureRect" parent="BeanCounts/blue/Icon"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.392157)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 68.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_p4w5a")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="BeanCounts/blue"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 129.873
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "x0"
+
+[node name="red" type="Control" parent="BeanCounts"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BeanCounts/red"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_o6k3k")
+expand_mode = 2
+
+[node name="Shadow" type="TextureRect" parent="BeanCounts/red/Icon"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.392157)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 68.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_p4w5a")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="BeanCounts/red"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 129.873
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "x0"
+
+[node name="white" type="Control" parent="BeanCounts"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BeanCounts/white"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_bylah")
+expand_mode = 2
+
+[node name="Shadow" type="TextureRect" parent="BeanCounts/white/Icon"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.392157)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 68.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_p4w5a")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="BeanCounts/white"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 129.873
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "x0"
+
+[node name="black" type="Control" parent="BeanCounts"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BeanCounts/black"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_buj42")
+expand_mode = 2
+
+[node name="Shadow" type="TextureRect" parent="BeanCounts/black/Icon"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.392157)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 68.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_p4w5a")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="BeanCounts/black"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 129.873
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "x0"
+
+[node name="SpudCounts" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 304.0
+offset_top = 64.0
+offset_right = -72.0
+offset_bottom = 128.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="green" type="Control" parent="SpudCounts"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="SpudCounts/green"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_lredl")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="SpudCounts/green"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 129.873
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "x0"
+
+[node name="yellow" type="Control" parent="SpudCounts"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="SpudCounts/yellow"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_dyj5m")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="SpudCounts/yellow"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 129.873
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "x0"
+
+[node name="blue" type="Control" parent="SpudCounts"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="SpudCounts/blue"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_jrfit")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="SpudCounts/blue"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 129.873
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "x0"
+
+[node name="red" type="Control" parent="SpudCounts"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="SpudCounts/red"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_to2oq")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="SpudCounts/red"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 129.873
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "x0"
+
+[node name="white" type="Control" parent="SpudCounts"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="SpudCounts/white"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_3bagj")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="SpudCounts/white"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 129.873
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "x0"
+
+[node name="black" type="Control" parent="SpudCounts"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="SpudCounts/black"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_k41oo")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="SpudCounts/black"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 129.873
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 36
+text = "x0"
+
+[node name="PlayerName" type="Label" parent="."]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 240.0
+offset_bottom = 52.0
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 48
+text = "Player Name"
+
+[node name="SettingsButton" type="Button" parent="."]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -296.0
+offset_top = 32.0
+offset_right = -168.0
+offset_bottom = 96.0
+grow_horizontal = 0
+text = "Settings"
+clip_text = true
+
+[node name="RecordsButton" type="Button" parent="."]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = 32.0
+offset_right = -16.0
+offset_bottom = 96.0
+grow_horizontal = 0
+text = "Records"
+clip_text = true

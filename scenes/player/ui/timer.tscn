@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsdrxiyesv61w"]
+
+[ext_resource type="Theme" uid="uid://b441552tienkm" path="res://main_theme.theme" id="1_b7dkt"]
+[ext_resource type="Script" path="res://scenes/player/ui/timer.gd" id="2_uxtxx"]
+
+[node name="Timer" type="Panel"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_bottom = 80.0
+theme = ExtResource("1_b7dkt")
+script = ExtResource("2_uxtxx")
+
+[node name="Minutes" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_right = -184.0
+offset_bottom = 80.0
+theme = ExtResource("1_b7dkt")
+bbcode_enabled = true
+text = "[b]00:[/b]"
+scroll_active = false
+
+[node name="Seconds" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -184.0
+offset_right = -112.0
+offset_bottom = 80.0
+theme = ExtResource("1_b7dkt")
+bbcode_enabled = true
+text = "[b]00.[/b]"
+scroll_active = false
+
+[node name="Msec" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_right = -16.0
+offset_bottom = 80.0
+theme = ExtResource("1_b7dkt")
+bbcode_enabled = true
+text = "[b]000[/b]"
+scroll_active = false

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxp3cwfak8flg"]
+
+[ext_resource type="Script" path="res://scenes/worlds/land.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://c2qfb48m11pow" path="res://scenes/worlds/1/platforms/ground.png" id="2_e2jkc"]
+[ext_resource type="Texture2D" uid="uid://x1ukiaw1jnlx" path="res://scenes/worlds/1/platforms/grass.png" id="3_xxmhi"]
+
+[node name="Land" type="StaticBody2D" groups=["land"]]
+collision_layer = 4
+script = ExtResource("2")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture_repeat = 2
+antialiased = true
+texture = ExtResource("2_e2jkc")
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 128, 0, 128)
+
+[node name="Outline" type="Line2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 128, 0, 128, 128, 0, 128, 0, 0)
+width = 48.0
+texture = ExtResource("3_xxmhi")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+round_precision = 32
+antialiased = true

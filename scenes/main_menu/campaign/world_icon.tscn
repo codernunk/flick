@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://dhmgpsocikf48"]
+
+[ext_resource type="Script" path="res://scenes/main_menu/campaign/world_icon.gd" id="1_3k6x4"]
+[ext_resource type="Texture2D" uid="uid://bftu1cpbs2jsw" path="res://scenes/main_menu/campaign/world_1_icon.png" id="2_87qu7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2nq2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6k8pa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtojh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qjh1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b3dbo"]
+
+[sub_resource type="Animation" id="Animation_oouov"]
+resource_name = "Idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 3, 3),
+"points": PackedFloat32Array(0, -0.5, 4, 0.5, -4, 16, -0.6, -0.119329, 0.6, 0.119329, 0, -0.5, -4, 0.5, 4),
+"times": PackedFloat32Array(0, 2, 4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ew2vx"]
+_data = {
+"Idle": SubResource("Animation_oouov")
+}
+
+[node name="WorldIcon" type="Button"]
+anchors_preset = -1
+anchor_right = 0.133333
+anchor_bottom = 0.237037
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 128)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x2nq2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6k8pa")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vtojh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4qjh1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3dbo")
+script = ExtResource("1_3k6x4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -112.298
+offset_right = 128.0
+offset_bottom = 143.701
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("2_87qu7")
+expand_mode = 1
+
+[node name="Shadow" type="TextureRect" parent="Sprite"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0.286275, 0.286275, 0.286275, 0.180392)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -118.05
+offset_right = 132.0
+offset_bottom = 137.949
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("2_87qu7")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="Sprite"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 21.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+text = "???"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_ew2vx")
+}
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]

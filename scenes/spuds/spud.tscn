@@ -1,0 +1,171 @@
+[gd_scene load_steps=13 format=3 uid="uid://ba7fm7mbk8u70"]
+
+[ext_resource type="Script" path="res://scenes/spuds/spud.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://crp4qs3tjhk3w" path="res://scenes/spuds/spud_green.png" id="2_86eg7"]
+[ext_resource type="Texture2D" uid="uid://khqdwynnq6lm" path="res://global/particles/fx_bubble.png" id="3_ydr41"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4rvk"]
+size = Vector2(80, 96)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(128, 128)
+
+[sub_resource type="Animation" id="Animation_f6m31"]
+resource_name = "Active"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [120, 179]
+}
+
+[sub_resource type="Animation" id="Animation_m541o"]
+resource_name = "Get"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [60, 119]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SleepParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_00bjv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SleepParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6p5lj"]
+resource_name = "Sleep"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 59]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SleepParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_usbjq"]
+_data = {
+"Active": SubResource("Animation_f6m31"),
+"Get": SubResource("Animation_m541o"),
+"RESET": SubResource("Animation_00bjv"),
+"Sleep": SubResource("Animation_6p5lj")
+}
+
+[sub_resource type="Curve" id="Curve_kbvxt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 2), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0krhr"]
+offsets = PackedFloat32Array(0, 0.504762, 1)
+colors = PackedColorArray(1, 1, 1, 0.351522, 1, 1, 1, 0.709804, 1, 1, 1, 0)
+
+[node name="Spud" type="Area2D" groups=["pickup"]]
+collision_layer = 128
+monitorable = false
+script = ExtResource("2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_86eg7")
+hframes = 16
+vframes = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_s4rvk")
+
+[node name="SizeHelper" type="CollisionShape2D" parent="."]
+shape = SubResource("2")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Sleep"
+libraries = {
+"": SubResource("AnimationLibrary_usbjq")
+}
+
+[node name="SleepParticles" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(8, 24)
+amount = 1
+lifetime = 4.0
+draw_order = 1
+texture = ExtResource("3_ydr41")
+gravity = Vector2(-1, -10)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_kbvxt")
+color_ramp = SubResource("Gradient_0krhr")
+
+[connection signal="body_entered" from="." to="." method="_on_Bean_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

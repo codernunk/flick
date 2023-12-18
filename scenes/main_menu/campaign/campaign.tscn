@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://lif5pj4odeva"]
+
+[ext_resource type="Theme" uid="uid://b441552tienkm" path="res://main_theme.theme" id="1_117fj"]
+[ext_resource type="Script" path="res://scenes/main_menu/campaign/campaign.gd" id="1_nhe5y"]
+[ext_resource type="Texture2D" uid="uid://cjy28v8uiqk4s" path="res://scenes/main_menu/campaign/world_map.png" id="2_08li2"]
+[ext_resource type="PackedScene" uid="uid://o7i8nn8rlao7" path="res://scenes/main_menu/campaign/world_select.tscn" id="3_m145y"]
+[ext_resource type="PackedScene" uid="uid://jbml4bbnxosi" path="res://scenes/main_menu/campaign/level_select.tscn" id="5_nu2qv"]
+[ext_resource type="PackedScene" uid="uid://dvnurc7bjokmt" path="res://scenes/main_menu/campaign/confirm_modal.tscn" id="6_pmirn"]
+
+[node name="Campaign" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_117fj")
+script = ExtResource("1_nhe5y")
+
+[node name="Map" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_08li2")
+expand_mode = 1
+
+[node name="WorldSelect" parent="." instance=ExtResource("3_m145y")]
+layout_mode = 1
+
+[node name="LevelSelect" parent="." instance=ExtResource("5_nu2qv")]
+visible = false
+layout_mode = 1
+
+[node name="ModalWindow" parent="." instance=ExtResource("6_pmirn")]
+visible = false
+layout_mode = 1
+
+[connection signal="world_selected" from="WorldSelect" to="." method="_on_world_select_world_selected"]
+[connection signal="cancelled" from="LevelSelect" to="." method="_on_level_select_cancelled"]
+[connection signal="level_selected" from="LevelSelect" to="." method="_on_level_select_level_selected"]
+[connection signal="cancelled" from="ModalWindow" to="." method="_on_modal_window_cancelled"]
+[connection signal="confirmed" from="ModalWindow" to="." method="_on_modal_window_confirmed"]

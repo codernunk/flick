@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsfcq4i3apbux"]
+
+[ext_resource type="PackedScene" uid="uid://dixc53qmk7mt1" path="res://scenes/worlds/1/platforms/platform.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://rywpywong4ea" path="res://scenes/worlds/1/parallax_background.tscn" id="1_68btm"]
+[ext_resource type="PackedScene" uid="uid://dxp3cwfak8flg" path="res://scenes/worlds/1/platforms/land.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://d2guhbdivtrj3" path="res://scenes/spring/spring.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://buc0w4by4o7em" path="res://scenes/player/player.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://33okuj8j1cn" path="res://scenes/bean/bean.tscn" id="6_k03et"]
+[ext_resource type="Texture2D" uid="uid://dy8otsgbdfdd1" path="res://global/sky/sky_sunset.png" id="7"]
+[ext_resource type="PackedScene" uid="uid://ba7fm7mbk8u70" path="res://scenes/spuds/spud.tscn" id="8_aphw3"]
+
+[node name="1_1" type="Node2D"]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_68btm")]
+
+[node name="Sky" parent="ParallaxBackground/Sky" index="0"]
+texture = ExtResource("7")
+
+[node name="Player" parent="." instance=ExtResource("5")]
+position = Vector2(480, -512)
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Land" parent="Ground" instance=ExtResource("3")]
+position = Vector2(0, -1088)
+
+[node name="Polygon2D" parent="Ground/Land" index="0"]
+polygon = PackedVector2Array(0, -2688, 128, -2688, 128, 640, 1600, 640, 2120, 448, 2648, 96, 3096, -104, 3424, -136, 3752, -128, 3936, -96, 4112, -16, 4488, 120, 5064, 88, 5624, -120, 6144, -384, 6568, -680, 7064, -696, 7064, 1072, 3736, 1088, 2136, 1088, 1600, 1088, 0, 1088)
+
+[node name="Outline" parent="Ground/Land" index="1"]
+points = PackedVector2Array(0, -2688, 128, -2688, 128, 640, 1600, 640, 2120, 448, 2648, 96, 3096, -104, 3424, -136, 3752, -128, 3936, -96, 4112, -16, 4488, 120, 5064, 88, 5624, -120, 6144, -384, 6568, -680, 7064, -696, 7064, 1072, 3736, 1088, 2136, 1088, 1600, 1088, 0, 1088, 0, -2688)
+metadata/_edit_lock_ = true
+
+[node name="Land2" parent="Ground" instance=ExtResource("3")]
+position = Vector2(9643.39, -2073.21)
+
+[node name="Polygon2D" parent="Ground/Land2" index="0"]
+polygon = PackedVector2Array(-331.391, -1694.79, -19.3906, -1414.79, 636.609, -622.791, 1692.61, 473.209, 2716.61, 945.209, 4260.61, 1409.21, 4348.61, 2065.21, -115.391, 2065.21, -555.391, -1374.79, -467.391, -1598.79)
+
+[node name="Outline" parent="Ground/Land2" index="1"]
+points = PackedVector2Array(-331.391, -1694.79, -19.3906, -1414.79, 636.609, -622.791, 1692.61, 473.209, 2716.61, 945.209, 4260.61, 1409.21, 4348.61, 2065.21, -115.391, 2065.21, -555.391, -1374.79, -467.391, -1598.79, -331.391, -1694.79)
+metadata/_edit_lock_ = true
+
+[node name="Platform" parent="Ground" instance=ExtResource("1")]
+position = Vector2(3896, -1752)
+
+[node name="Platform2" parent="Ground" instance=ExtResource("1")]
+position = Vector2(2808, -2096)
+
+[node name="Platform3" parent="Ground" instance=ExtResource("1")]
+position = Vector2(3896, -2552)
+
+[node name="Platform4" parent="Ground" instance=ExtResource("1")]
+position = Vector2(7424, -1824)
+
+[node name="Platform5" parent="Ground" instance=ExtResource("1")]
+position = Vector2(8104, -2616)
+
+[node name="Platform6" parent="Ground" instance=ExtResource("1")]
+position = Vector2(8808, -3192)
+
+[node name="Beans" type="Node2D" parent="."]
+
+[node name="GreenBean3" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(1504, -480)
+collision_layer = 128
+
+[node name="GreenBean15" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(1184, -480)
+collision_layer = 128
+
+[node name="GreenBean17" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(864, -480)
+collision_layer = 128
+
+[node name="GreenBean5" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(2088, -680)
+collision_layer = 128
+
+[node name="GreenBean6" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(3352, -1288)
+collision_layer = 128
+
+[node name="GreenBean12" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(4712, -1088)
+collision_layer = 128
+
+[node name="GreenBean13" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(6816, -2008)
+collision_layer = 128
+
+[node name="GreenBean14" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(5880, -1584)
+collision_layer = 128
+
+[node name="GreenBean16" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(7432, -2032)
+collision_layer = 128
+
+[node name="GreenBean18" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(8080, -2800)
+collision_layer = 128
+
+[node name="GreenBean19" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(8776, -3448)
+collision_layer = 128
+
+[node name="GreenBean20" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(8384, -3736)
+collision_layer = 128
+
+[node name="GreenBean21" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(7632, -2936)
+collision_layer = 128
+
+[node name="GreenBean7" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(3888, -1840)
+collision_layer = 128
+
+[node name="GreenBean8" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(2792, -2184)
+collision_layer = 128
+
+[node name="GreenBean9" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(3384, -2120)
+collision_layer = 128
+
+[node name="GreenBean10" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(3368, -2600)
+collision_layer = 128
+
+[node name="GreenBean11" parent="Beans" instance=ExtResource("6_k03et")]
+position = Vector2(2624, -1056)
+collision_layer = 128
+
+[node name="Spuds" type="Node2D" parent="."]
+
+[node name="Spud" parent="Spuds" instance=ExtResource("8_aphw3")]
+position = Vector2(3896, -2632)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Interactable" type="Node2D" parent="."]
+
+[node name="Spring" parent="." instance=ExtResource("4")]
+position = Vector2(7424, -1832)
+
+[node name="Spring2" parent="." instance=ExtResource("4")]
+position = Vector2(8104, -2624)
+
+[node name="Spring3" parent="." instance=ExtResource("4")]
+position = Vector2(8808, -3200)
+
+[editable path="ParallaxBackground"]
+[editable path="Ground/Land"]
+[editable path="Ground/Land2"]

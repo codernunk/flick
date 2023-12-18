@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cg4kr48bbb40n"]
+
+[sub_resource type="Shader" id="35"]
+code = "// https://github.com/godotengine/godot-demo-projects/blob/master/2d/sprite_shaders/shaders/offsetshadow.gdshader
+shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec2 offset = vec2(8.0, 8.0);
+uniform vec4 modulate : source_color;
+
+void fragment() {
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+
+	vec4 shadow = vec4(modulate.rgb, texture(TEXTURE, UV - offset * ps).a * modulate.a);
+	vec4 col = texture(TEXTURE, UV);
+
+	COLOR = mix(shadow, col, col.a);
+}"
+
+[resource]
+shader = SubResource("35")
+shader_parameter/offset = Vector2(4, 4)
+shader_parameter/modulate = Color(0.362829, 0.36283, 0.362829, 1)

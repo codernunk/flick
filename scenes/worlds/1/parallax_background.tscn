@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://rywpywong4ea"]
+
+[ext_resource type="Texture2D" uid="uid://nibggcq6y444" path="res://global/sky/sky_day.png" id="1_jgvh7"]
+[ext_resource type="Texture2D" uid="uid://cdn22dfodxfr" path="res://scenes/worlds/1/trees.png" id="2_rmo6i"]
+[ext_resource type="Texture2D" uid="uid://cpdqv1s0gj4l1" path="res://scenes/worlds/1/background_near.png" id="3_bokkl"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+motion_offset = Vector2(0, 540)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sky" type="Sprite2D" parent="Sky"]
+modulate = Color(0.768627, 0.952941, 0.976471, 1)
+texture = ExtResource("1_jgvh7")
+
+[node name="MountainsFar" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0.1)
+motion_offset = Vector2(800, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Background" type="Sprite2D" parent="MountainsFar"]
+position = Vector2(-56, 312)
+scale = Vector2(0.25274, 0.25274)
+texture = ExtResource("2_rmo6i")
+centered = false
+
+[node name="Background2" type="Sprite2D" parent="MountainsFar"]
+position = Vector2(960, 312)
+scale = Vector2(0.25274, 0.25274)
+texture = ExtResource("2_rmo6i")
+centered = false
+
+[node name="MountainsNearFar" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0.15)
+motion_offset = Vector2(480, 200)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Background" type="Sprite2D" parent="MountainsNearFar"]
+modulate = Color(0.901961, 0.854902, 0.580392, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_bokkl")
+centered = false
+
+[node name="Background2" type="Sprite2D" parent="MountainsNearFar"]
+modulate = Color(0.901961, 0.854902, 0.580392, 1)
+position = Vector2(960, 0)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_bokkl")
+centered = false
+
+[node name="MountainsNear" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0.2)
+motion_offset = Vector2(0, -50)
+motion_mirroring = Vector2(1919, 0)
+
+[node name="Background" type="Sprite2D" parent="MountainsNear"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_bokkl")
+centered = false

@@ -1,0 +1,212 @@
+[gd_scene load_steps=14 format=3 uid="uid://b4agij0h8yfh5"]
+
+[ext_resource type="PackedScene" uid="uid://dxo4281b484j4" path="res://scenes/enemies/enemy_base.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://caanscg0u2rl6" path="res://scenes/enemies/tomato_bro/tomato_bro.png" id="2"]
+
+[sub_resource type="Animation" id="2"]
+resource_name = "Die"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Direction/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [40, 79]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Direction/Sprite2D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-32, -64), Vector2(-128, 512)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Direction/Sprite2D:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.35619]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Direction/Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="3"]
+resource_name = "Flip"
+length = 0.4
+
+[sub_resource type="Animation" id="1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Direction/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Direction/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Direction/Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Direction/Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="11"]
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Direction/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 39]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5yob"]
+_data = {
+"Die": SubResource("2"),
+"Flip": SubResource("3"),
+"RESET": SubResource("1"),
+"Walk": SubResource("11")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4hmlh"]
+animation = &"Flip"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2w7s6"]
+animation = &"Die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8pkje"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ldelf"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_vtfjc"]
+input_0/name = "normal"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "die"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2igbu"]
+graph_offset = Vector2(-496.145, -113.832)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_8pkje")
+nodes/Animation/position = Vector2(-400, 0)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_4hmlh")
+"nodes/Animation 2/position" = Vector2(-400, 120)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_2w7s6")
+"nodes/Animation 3/position" = Vector2(-400, 240)
+nodes/flip/node = SubResource("AnimationNodeOneShot_ldelf")
+nodes/flip/position = Vector2(-200, 0)
+nodes/state/node = SubResource("AnimationNodeTransition_vtfjc")
+nodes/state/position = Vector2(40, 180)
+node_connections = [&"output", 0, &"state", &"flip", 0, &"Animation", &"flip", 1, &"Animation 2", &"state", 0, &"flip", &"state", 1, &"Animation 3"]
+
+[node name="EnemyWalking" instance=ExtResource("1")]
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+polygon = PackedVector2Array(48, -56, 48, 56, 0, 64, -48, 56, -48, -56)
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_c5yob")
+}
+
+[node name="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_2igbu")
+parameters/state/current_state = "normal"
+parameters/state/current_index = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Direction" index="0"]
+texture = ExtResource("2")
+hframes = 12
+vframes = 12
+
+[node name="RayCastFloor" type="RayCast2D" parent="Direction" index="1"]
+position = Vector2(48, 0)
+target_position = Vector2(0, 128)
+collision_mask = 4
+
+[node name="RayCastWall" type="RayCast2D" parent="Direction" index="2"]
+position = Vector2(48, 0)
+target_position = Vector2(48, 0)
+collision_mask = 4

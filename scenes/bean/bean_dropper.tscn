@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://buenw8pm652h0"]
+
+[ext_resource type="Script" path="res://scenes/bean/bean_dropper.gd" id="1_nrr3l"]
+
+[node name="BeanDropper" type="Node2D"]
+script = ExtResource("1_nrr3l")

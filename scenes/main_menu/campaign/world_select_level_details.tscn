@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://do43a5lx36wnv"]
+
+[ext_resource type="Texture2D" uid="uid://crk8u4q5h81a7" path="res://global/particles/object_atlas.png" id="1_658cl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eop72"]
+atlas = ExtResource("1_658cl")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wubse"]
+atlas = ExtResource("1_658cl")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbsmq"]
+atlas = ExtResource("1_658cl")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_428kx"]
+atlas = ExtResource("1_658cl")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsb1u"]
+atlas = ExtResource("1_658cl")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwfak"]
+atlas = ExtResource("1_658cl")
+region = Rect2(640, 128, 128, 128)
+
+[node name="Level1" type="HBoxContainer"]
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"HeaderLarge"
+text = "1-1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rank" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"HeaderLarge"
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="green" type="TextureRect" parent="."]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.572549)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_eop72")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="yellow" type="TextureRect" parent="."]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.572549)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_wubse")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="blue" type="TextureRect" parent="."]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.572549)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_nbsmq")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="red" type="TextureRect" parent="."]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.572549)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_428kx")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="white" type="TextureRect" parent="."]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.572549)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_vsb1u")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="black" type="TextureRect" parent="."]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.572549)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_hwfak")
+expand_mode = 1
+stretch_mode = 3

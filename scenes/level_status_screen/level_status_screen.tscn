@@ -1,0 +1,429 @@
+[gd_scene load_steps=7 format=3 uid="uid://crf4ca1h7nh08"]
+
+[ext_resource type="Script" path="res://scenes/level_status_screen/level_status_screen.gd" id="1_pi2df"]
+[ext_resource type="Theme" uid="uid://b441552tienkm" path="res://main_theme.theme" id="2_4xqsb"]
+[ext_resource type="PackedScene" uid="uid://358kf845olc5" path="res://scenes/main_menu/status_panel/status_panel.tscn" id="4_635m7"]
+
+[sub_resource type="Animation" id="Animation_yp6hq"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelStatusScreen:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1080), Vector2(0, -200), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelStatusScreen:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.6, 0.7, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1.5), Vector2(1, 0.5), Vector2(1.2, 0.25), Vector2(0.9, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_06j7b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.196078)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelStatusScreen:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelStatusScreen:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LevelStatusScreen:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1920, 1080)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_15m4x"]
+_data = {
+"FadeIn": SubResource("Animation_yp6hq"),
+"RESET": SubResource("Animation_06j7b")
+}
+
+[node name="LevelStatusScreen" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_pi2df")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.196078)
+
+[node name="LevelStatusScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 0)
+theme = ExtResource("2_4xqsb")
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelStatusScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="Panel" type="Panel" parent="LevelStatusScreen/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelStatusScreen/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[wave amp=50 freq=5][center]Status[/center][/wave]"
+fit_content = true
+
+[node name="GridContainer" type="GridContainer" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Placeholder" type="Control" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TargetTitle" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[right]Target[/right]"
+fit_content = true
+
+[node name="YourScoreTitle" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[right]Your Score[/right]"
+fit_content = true
+
+[node name="CompletedTime" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave amp=50 freq=5]Completed Time:[/wave]"
+fit_content = true
+
+[node name="CompletedTimeTarget" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[right]99:99.999[/right]"
+fit_content = true
+
+[node name="CompletedTimeValue" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[right]99:99.999[/right]"
+fit_content = true
+
+[node name="BeansCollected" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave amp=50 freq=5]Beans Collected (Total):[/wave]"
+fit_content = true
+
+[node name="BeansCollectedTarget" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[right]100[/right]"
+fit_content = true
+
+[node name="BeansCollectedValue" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[right]100[/right]"
+fit_content = true
+
+[node name="Falls" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave amp=50 freq=5]Falls:[/wave]"
+fit_content = true
+
+[node name="FallsTarget" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[right]3[/right]"
+fit_content = true
+
+[node name="FallsValue" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[right]0[/right]"
+fit_content = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 400
+theme_override_constants/margin_bottom = 16
+
+[node name="RankLabel" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave amp=50 freq=5]Rank:[/wave]"
+fit_content = true
+
+[node name="RankLetter" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 160
+bbcode_enabled = true
+text = "[center][wave amp=50 freq=5]S[/wave][/center]"
+fit_content = true
+
+[node name="BeanBonus" type="RichTextLabel" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center][wave amp=50 freq=5]Bean Bonus: 1.5x[/wave][/center]"
+fit_content = true
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 400
+theme_override_constants/margin_bottom = 16
+
+[node name="LevelSelectButton" type="Button" parent="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "To Level Select"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "FadeIn"
+libraries = {
+"": SubResource("AnimationLibrary_15m4x")
+}
+
+[node name="StatusPanel" parent="." instance=ExtResource("4_635m7")]
+unique_name_in_owner = true
+size_flags_vertical = 4
+
+[node name="BeanPlusGreen" type="Label" parent="StatusPanel/BeanCounts/green" index="2"]
+unique_name_in_owner = true
+modulate = Color(0, 0.788235, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.125
+anchor_right = 1.125
+offset_left = 112.0
+offset_top = 48.0
+offset_right = 14.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 36
+text = "+999"
+
+[node name="BeanPlusYellow" type="Label" parent="StatusPanel/BeanCounts/yellow" index="2"]
+unique_name_in_owner = true
+modulate = Color(0, 0.788235, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.125
+anchor_right = 1.12
+offset_left = 112.0
+offset_top = 48.0
+offset_right = 14.64
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 36
+text = "+999"
+
+[node name="Shadow" parent="StatusPanel/BeanCounts/blue/Icon" index="0"]
+layout_mode = 0
+
+[node name="BeanPlusBlue" type="Label" parent="StatusPanel/BeanCounts/blue" index="2"]
+unique_name_in_owner = true
+modulate = Color(0, 0.788235, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.125
+anchor_right = 1.12
+offset_left = 112.0
+offset_top = 48.0
+offset_right = 14.64
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 36
+text = "+999"
+
+[node name="Shadow" parent="StatusPanel/BeanCounts/red/Icon" index="0"]
+layout_mode = 0
+
+[node name="BeanPlusRed" type="Label" parent="StatusPanel/BeanCounts/red" index="2"]
+unique_name_in_owner = true
+modulate = Color(0, 0.788235, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.125
+anchor_right = 1.12
+offset_left = 112.0
+offset_top = 48.0
+offset_right = 14.64
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 36
+text = "+999"
+
+[node name="Shadow" parent="StatusPanel/BeanCounts/white/Icon" index="0"]
+layout_mode = 0
+
+[node name="BeanPlusWhite" type="Label" parent="StatusPanel/BeanCounts/white" index="2"]
+unique_name_in_owner = true
+modulate = Color(0, 0.788235, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.125
+anchor_right = 1.12
+offset_left = 112.0
+offset_top = 48.0
+offset_right = 14.64
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 36
+text = "+999"
+
+[node name="Shadow" parent="StatusPanel/BeanCounts/black/Icon" index="0"]
+layout_mode = 0
+
+[node name="BeanPlusBlack" type="Label" parent="StatusPanel/BeanCounts/black" index="2"]
+unique_name_in_owner = true
+modulate = Color(0, 0.788235, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.125
+anchor_right = 1.12
+offset_left = 104.0
+offset_top = 48.0
+offset_right = 6.64
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 36
+text = "+999"
+
+[connection signal="button_up" from="LevelStatusScreen/MarginContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/LevelSelectButton" to="." method="_on_level_select_button_button_up"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="StatusPanel"]
