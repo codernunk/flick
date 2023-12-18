@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://33okuj8j1cn"]
 
-[ext_resource type="Texture2D" uid="uid://crk8u4q5h81a7" path="res://global/particles/object_atlas.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://crk8u4q5h81a7" path="res://global/icons/beans.png" id="1"]
 [ext_resource type="Script" path="res://scenes/bean/bean.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://khqdwynnq6lm" path="res://global/particles/fx_bubble.png" id="3_ky3t2"]
 

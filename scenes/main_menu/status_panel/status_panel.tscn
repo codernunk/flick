@@ -1,44 +1,40 @@
-[gd_scene load_steps=19 format=3 uid="uid://358kf845olc5"]
+[gd_scene load_steps=18 format=3 uid="uid://358kf845olc5"]
 
 [ext_resource type="Theme" uid="uid://b441552tienkm" path="res://main_theme.theme" id="1_jkejm"]
 [ext_resource type="Script" path="res://scenes/main_menu/status_panel/status_panel.gd" id="2_xtm24"]
-[ext_resource type="Texture2D" uid="uid://crk8u4q5h81a7" path="res://global/particles/object_atlas.png" id="3_djgl0"]
+[ext_resource type="Texture2D" uid="uid://crk8u4q5h81a7" path="res://global/icons/beans.png" id="3_jshys"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7uyd"]
-atlas = ExtResource("3_djgl0")
+atlas = ExtResource("3_jshys")
 region = Rect2(0, 0, 128, 128)
 margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_knmvs"]
-load_path = "res://.godot/imported/object_atlas.png-a8c1b30d3cca1e3cf1a7e1611e73fde0.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_p4w5a"]
-atlas = SubResource("CompressedTexture2D_knmvs")
+atlas = ExtResource("3_jshys")
 region = Rect2(128, 0, 128, 128)
 margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_my102"]
-load_path = "res://.godot/imported/object_atlas.png-a8c1b30d3cca1e3cf1a7e1611e73fde0.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jswq"]
-atlas = SubResource("CompressedTexture2D_my102")
+atlas = ExtResource("3_jshys")
 region = Rect2(256, 0, 128, 128)
 margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6k3k"]
-atlas = SubResource("CompressedTexture2D_knmvs")
+atlas = ExtResource("3_jshys")
 region = Rect2(384, 0, 128, 128)
 margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bylah"]
-atlas = SubResource("CompressedTexture2D_knmvs")
+atlas = ExtResource("3_jshys")
 region = Rect2(512, 0, 128, 128)
 margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_buj42"]
-atlas = SubResource("CompressedTexture2D_knmvs")
+atlas = ExtResource("3_jshys")
 region = Rect2(640, 0, 128, 128)
 margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_knmvs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lredl"]
 atlas = SubResource("CompressedTexture2D_knmvs")
@@ -46,7 +42,6 @@ region = Rect2(0, 128, 128, 128)
 margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5bh3b"]
-load_path = "res://.godot/imported/object_atlas.png-a8c1b30d3cca1e3cf1a7e1611e73fde0.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dyj5m"]
 atlas = SubResource("CompressedTexture2D_5bh3b")
@@ -299,6 +294,7 @@ theme_override_font_sizes/font_size = 36
 text = "x0"
 
 [node name="SpudCounts" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
